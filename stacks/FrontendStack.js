@@ -8,10 +8,16 @@ export default class FrontendStack extends sst.Stack {
 
     // Define our React app
     const site = new sst.ReactStaticSite(this, "ReactSite", {
+      customDomain: {
+        domainName: scope.stage === "prod"
+          ? "note.querion.ca"
+          : `note-${scope.stage}-${scope.account}.querion.ca`,
+        hostedZone: 'querion.ca',
+      },
       path: "frontend",
       // Pass in our environment variables
       environment: {
-        REACT_APP_API_URL: api.url,
+        REACT_APP_API_URL: api.customDomainUrl || api.url,
         REACT_APP_REGION: scope.region,
         REACT_APP_BUCKET: bucket.bucketName,
         REACT_APP_USER_POOL_ID: auth.cognitoUserPool.userPoolId,
@@ -23,7 +29,7 @@ export default class FrontendStack extends sst.Stack {
 
     // Show the url in the output
     this.addOutputs({
-      SiteUrl: site.url,
+      SiteUrl: site.customDomainUrl || site.url,
     });
   }
 }
