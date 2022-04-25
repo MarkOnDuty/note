@@ -16,18 +16,19 @@ export default class ApiStack extends sst.Stack {
               : `noteapi-${scope.stage}-${scope.account}.querion.ca`,
             defaultAuthorizationType: "AWS_IAM",
             defaultFunctionProps: {
-                environment: {
-                    TABLE_NAME: table.tableName,
-                    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-                },
+              memorySize: 128,
+              environment: {
+                TABLE_NAME: table.tableName,
+                STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+              },
             },
             routes: {
-                "DELETE /notes/{id}": "src/delete.main",
-                "PUT    /notes/{id}": "src/update.main",
-                "GET    /notes": "src/list.main",
-                "POST   /notes": "src/create.main",
-                "POST   /billing" : "src/billing.main",
-                "GET    /notes/{id}": "src/get.main",
+              "DELETE /notes/{id}": "src/delete.main",
+              "PUT    /notes/{id}": "src/update.main",
+              "GET    /notes": "src/list.main",
+              "POST   /notes": "src/create.main",
+              "POST   /billing" : "src/billing.main",
+              "GET    /notes/{id}": "src/get.main",
             },
         });
 
