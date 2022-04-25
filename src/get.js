@@ -7,7 +7,7 @@ export const main = handler(async (event) => {
     // 'Key' defines the partition key and sort key of the item to be retrieved
     Key: {
       userId: event.requestContext.authorizer.iam.cognitoIdentity.identityId,
-      //noteId: event.pathParameters.id, // The id of the note from the path
+      noteId: event.pathParameters.id, // The id of the note from the path
     },
   };
 
@@ -15,6 +15,8 @@ export const main = handler(async (event) => {
   if (!result.Item) {
     throw new Error("Item not found.");
   }
+
+  await new Promise(resolve => setTimeout(resolve, 10000));
 
   // Return the retrieved item
   return result.Item;
