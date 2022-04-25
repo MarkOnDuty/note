@@ -19,6 +19,9 @@ export function logError(error, errorInfo = null) {
     return;
   }
 
+  console.log("Hoo-ray!");
+  console.log(error);
+
   Sentry.withScope((scope) => {
     errorInfo && scope.setExtras(errorInfo);
     Sentry.captureException(error);
