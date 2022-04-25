@@ -13,7 +13,7 @@ export default class ApiStack extends sst.Stack {
         this.api = new sst.Api(this, "Api", {
             customDomain: scope.stage === "prod"
               ? "noteapi.querion.ca"
-              : `noteapi-${scope.account}.querion.ca`,
+              : `noteapi-${scope.stage}-${scope.account}.querion.ca`,
             defaultAuthorizationType: "AWS_IAM",
             defaultFunctionProps: {
                 environment: {

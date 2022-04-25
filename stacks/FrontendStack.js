@@ -11,7 +11,7 @@ export default class FrontendStack extends sst.Stack {
       customDomain: {
         domainName: scope.stage === "prod"
           ? "note.querion.ca"
-          : `note-${scope.account}.querion.ca`,
+          : `note-${scope.stage}-${scope.account}.querion.ca`,
         hostedZone: 'querion.ca',
       },
       path: "frontend",

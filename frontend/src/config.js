@@ -1,4 +1,6 @@
 const config = {
+  // Should these two be removed and set up through the proces.env like everything else?
+  // They really should be, and they should be stage- (ie. developer-) dependant.
   SENTRY_DSN: "https://c34080942fd042d39e7cff3ffa95ea05@o1189108.ingest.sentry.io/6354717",
   STRIPE_KEY: "pk_test_51KemB6L3max4h1ltuwyQVrUQCGxJeGMh77IyPvui1jmqieGbFV7zuC60lsE3UMb4FekDTyw75qmvnmziQwLKPK0X00180mJDXf",
   // Backend config
