@@ -7,7 +7,7 @@ export default class FrontendStack extends sst.Stack {
     const { api, auth, bucket } = props;
 
     // Define our React app
-    const site = new sst.ReactStaticSite(this, "ReactSite", {
+    const site = new sst.StaticSite(this, "NoteSite", {
       customDomain: {
         domainName: scope.stage === "prod"
           ? "note.querion.ca"
@@ -15,14 +15,16 @@ export default class FrontendStack extends sst.Stack {
         hostedZone: 'querion.ca',
       },
       path: "frontend",
+      buildOutput: "dist",
+      buildCommand: "npm run generate",
       // Pass in our environment variables
       environment: {
-        REACT_APP_API_URL: api.customDomainUrl || api.url,
-        REACT_APP_REGION: scope.region,
-        REACT_APP_BUCKET: bucket.bucketName,
-        REACT_APP_USER_POOL_ID: auth.cognitoUserPool.userPoolId,
-        REACT_APP_IDENTITY_POOL_ID: auth.cognitoCfnIdentityPool.ref,
-        REACT_APP_USER_POOL_CLIENT_ID:
+        APP_API_URL: api.customDomainUrl || api.url,
+        APP_REGION: scope.region,
+        APP_BUCKET: bucket.bucketName,
+        APP_USER_POOL_ID: auth.cognitoUserPool.userPoolId,
+        APP_IDENTITY_POOL_ID: auth.cognitoCfnIdentityPool.ref,
+        APP_USER_POOL_CLIENT_ID:
           auth.cognitoUserPoolClient.userPoolClientId,
       },
     });

@@ -1,47 +1,38 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "note-frontend",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@sentry/browser": "^6.19.6",
-    "@stripe/react-stripe-js": "^1.7.2",
-    "@stripe/stripe-js": "^1.27.0",
-    "aws-amplify": "^4.3.19",
-    "cra-template": "1.1.3",
-    "react": "^17.0.0",
-    "react-bootstrap": "^1.6.1",
-    "react-dom": "^17.0.0",
-    "react-icons": "^4.2.0",
-    "react-router-bootstrap": "^0.25.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "5.0.0"
-  },
   "scripts": {
-    "start": "sst-env -- react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint": "npm run lint:js",
+    "lintfix": "npm run lint:js -- --fix",
+    "test": "jest"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "core-js": "^3.19.3",
+    "nuxt": "^2.15.8",
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "vuetify": "^2.6.1",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@serverless-stack/static-site-env": "^0.69.5",
-    "web-vitals": "^2.1.4"
+    "@babel/eslint-parser": "^7.16.3",
+    "@nuxtjs/eslint-config": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/vuetify": "^1.12.3",
+    "@vue/test-utils": "^1.3.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^27.4.4",
+    "eslint": "^8.4.1",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "jest": "^27.4.4",
+    "vue-jest": "^3.0.4"
   }
 }
